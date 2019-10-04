@@ -4,7 +4,7 @@
 
 class Graph {
 protected:
-	size_t vertex_count_;
+	size_t vertexCount;
 	size_t edgeCount;
 	bool is_directed_;
 
@@ -12,12 +12,12 @@ public:
 	typedef size_t Vertex;
 
 	explicit Graph(size_t vertex_count, bool is_directed)
-		: vertex_count_(vertex_count),
+		: vertexCount(vertex_count),
 		is_directed_(is_directed),
 		edgeCount(0) {}
 
 	size_t GetVertexCount() const {
-		return vertex_count_;
+		return vertexCount;
 	}
 
 	size_t GetEdgeCount() const {
@@ -77,8 +77,7 @@ namespace GraphProcessing {
 				if (!Is_DFS_Cycling(graph, u, color)) {
 					return false;
 				}
-			}
-			else if (color[u] == GREY) {
+			} else if (color[u] == GREY) {
 				return false;
 			}
 		}
@@ -106,7 +105,7 @@ namespace GraphProcessing {
 
 		std::vector<Graph::Vertex> topsort;
 
-		for (Graph::Vertex vertex = 1; vertex < graph.GetVertexCount() + 1; ++vertex) {
+		for (Graph::Vertex vertex = 1; vertex < graph.GetVertexCount() + 1; vertex++) {
 			if (color[vertex] == WHITE) {
 				DFS_TopSort(graph, vertex, color, topsort);
 			}
@@ -141,6 +140,8 @@ int main() {
 			std::cout << vertex << " ";
 		}
 	}
+
+//	system("pause");
 
 	return 0;
 }
